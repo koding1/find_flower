@@ -41,7 +41,7 @@
 0 히나아나레 (Hinaarare)
 0 당근꽃 (CarrotFlower)
 0 작약꽃 (Peony)
-0 양지 (Potentilla)
+0 양지꽃 (Potentilla)
 0 배나무꽃 (PearBlossom)
 0 가자니아 (Gazania)
 0 명자꽃 (Chaenomeles)
@@ -69,5 +69,5 @@
 0 목련(Magnolia)
 0 폼폰국화 (pompon)
 0 라넌큘러스 (Ranunculus)
-
+*
 https://shene81.tistory.com/187
