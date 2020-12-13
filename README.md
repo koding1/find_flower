@@ -4,8 +4,8 @@ This Project using teachable machine - Find Flower Name(Classification)
 
 본 프로젝트는 2020/12/1에 시작되었습니다.
 
-<img src="readme_img/Freesia.PNG" width="30%" height="30%" />   
-<img src="readme_img/Lagrass.PNG" width="30%" height="30%" />   
+<img src="readme_img/Freesia.PNG" width="60%" height="60%" />   
+<img src="readme_img/Lagrass.PNG" width="60%" height="60%" />   
 프로젝트 진행 과정
 
 ## 1. 꽃 이미지 데이터 크롤링
