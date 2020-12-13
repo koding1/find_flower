@@ -6,13 +6,13 @@ This Project using teachable machine - Find Flower Name(Classification)
 
 <img style="float: right;" src="readme_img/result_all.png" width="100%" height="100%"/>
 
+
+
+<!--<details> -->
+<!--<summary> 실행 결과 보기 </summary> -->
 <!-- <img style="float: left;"  src="readme_img/Freesia.PNG" width="30%" height="30%"/> -->   
 <!-- <img style="float: right;" src="readme_img/Lagrass.PNG" width="30%" height="30%"/> -->
-
-<details>
-<summary> 실행 결과 보기 </summary>    
-
-</details>    
+<!--</details> -->
 
 
 프로젝트 진행 과정
