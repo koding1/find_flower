@@ -23,4 +23,11 @@ This Project using teachable machine - Find Flower Name(Classification)
 2. 데이터 정제(Data Cleansing) 
 
 ## Html, css, js
-![freesia_result_img](readme_img/Freesia.PNG) 
+
+이미지 삽입 전    
+
+<img src="readme_img/not_input.JPG" width="60%" height="60%" />     
+
+이미지 삽입 후    
+
+<img src="readme_img/Lagrass.PNG" width="60%" height="60%" />  
