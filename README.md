@@ -4,6 +4,8 @@ This Project using teachable machine - Find Flower Name(Classification)
 
 본 프로젝트는 2020/12/1에 시작되었습니다.
 
+![freesia_result_img](./readme_img/freesia.png)
+
 프로젝트 진행 과정
 
 ## 1. 꽃 이미지 데이터 크롤링
@@ -15,3 +17,5 @@ This Project using teachable machine - Find Flower Name(Classification)
 따라서 아래 두 사항을 차후 최우선적으로 개선할 사항으로 남겨둔다. ( 개선 시 삭제 처리 )    
 1. 이미지 추가(Add image)    
 2. 데이터 정제(Data Cleansing) 
+
+## Html, css, js
