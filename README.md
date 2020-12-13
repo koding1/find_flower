@@ -6,7 +6,7 @@ This Project using teachable machine - Find Flower Name(Classification)
 
 ![freesia_result_img](readme_img/Freesia.PNG)    
 
-[abc](readme_img/Freesia.PNG =100x20)
+![abc](readme_img/Freesia.PNG =100x20)
 프로젝트 진행 과정
 
 ## 1. 꽃 이미지 데이터 크롤링
