@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fda0b546406dfe1"
+        ></script>
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">이름없는 꽃</h1>
+                <img src="icons/f_icon.svg" alt="" class="flower_icon" />
+            </div>
+            <h2 class="subtitle">식물의 이름을 찾아드려요.</h2>
+        </section>
+
+        <!-- <div>Teachable Machine Image Model</div>
+        <button type="button" onclick="init()">Start</button>
+        <button type="button" onclick="predict()">Predict</button> -->
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        <div class="file-upload">
+            <!-- <button
+                class="file-upload-btn"
+                type="button"
+                onclick="$('.file-upload-input').trigger( 'click' )"
+            >
+                이미지 추가
+            </button> -->
+
+            <div class="image-upload-wrap">
+                <input
+                    class="file-upload-input"
+                    type="file"
+                    onchange="readURL(this);"
+                    accept="image/*"
+                />
+                <div class="drag-text">
+                    <h3>눌러서 이미지를 선택해주세요 !</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <img class="file-upload-image" id="flower_image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">
+                        다시 선택하기
+                    </button>
+                </div>
+            </div>
+            <!-- <div id="webcam-container"></div> -->
+            <div id="label-container"></div>
+
+            <div id="resumeProficiencies">
+                <div id="resumeProficienciesBottom">
+                    <div class="progress">
+                        <div
+                            class="adobe progress-bar progress-bar-info"
+                            role="progressbar"
+                            style="width: 0%;"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox_0a1d"></div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+        <script type="text/javascript">
+            // More API functions here:
+            // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+            // the link to your model provided by Teachable Machine export panel
+            // const URL = 'https://teachablemachine.withgoogle.com/models/x-l71Yk4Q/';
+            const URL = 'https://teachablemachine.withgoogle.com/models/SrKI3Mdfn/';
+
+            let model, labelContainer, maxPredictions;
+
+            // Load the image model and setup the webcam
+            async function init() {
+                const modelURL = URL + 'model.json';
+                const metadataURL = URL + 'metadata.json';
+
+                // load the model and metadata
+                // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+                // or files from your local hard drive
+                // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+
+                labelContainer = document.getElementById('label-container');
+                for (let i = 0; i < maxPredictions; i++) {
+                    // and class labels
+                    labelContainer.appendChild(document.createElement('div'));
+                }
+            }
+
+            // run the webcam image through the image model
+            async function predict() {
+                // predict can take in an image, video or canvas html element
+                var image = document.getElementById('flower_image');
+                const prediction = await model.predict(image, false);
+
+                prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+
+                for (let i = 0; i < maxPredictions; i++) {
+                    if (prediction[i].probability >= 0.1) {
+                        const classPrediction =
+                            prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
+                        labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                        $('.adobe').css('width', String(prediction[i].probability * 100) + '%');
+                    }
+                }
+            }
+        </script>
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.image-upload-wrap').hide();
+
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+
+                        $('.image-title').html(input.files[0].name);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+
+                    // 이 부분 중요 ! https://www.youtube.com/watch?v=EwBoKEG5GzE&list=PLU9-uwewPMe2-vtJAgWB6SNhHcTjJDgEO&index=5 9분 대
+                    init().then(() => {
+                        predict();
+                    });
+                } else {
+                    removeUpload();
+                }
+            }
+
+            function removeUpload() {
+                // 라벨 전체 삭제
+                while (labelContainer.hasChildNodes()) {
+                    labelContainer.removeChild(labelContainer.firstChild);
+                }
+
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+            }
+            $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.adobe').css('width', '50%');
+            });
+        </script>
+    </body>
+
+    <div class="corp_area">
+        <ul class="list_corp">
+            <li class="corp_item1">
+                <a href="https://dryicons.com/icon/flat-daisy-icon-8078"> 아이콘 제공 </a>
+            </li>
+            <li class="corp_item2">
+                <a> 제작자 : haegu_jh@naver.com </a>
+            </li>
+            <li class="corp_item3">
+                <a> instagram : haegu_jh </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ -->
+</html>
