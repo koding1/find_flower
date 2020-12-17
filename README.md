@@ -40,5 +40,6 @@ This Project using teachable machine - Find Flower Name(Classification)
 
 ## 3. 웹 뷰(webview) 앱  
 
-splash image  
+Splash image  
 <img src="readme_img/splash.png" width="20%" height="20%" /> 
+
