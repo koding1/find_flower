@@ -28,7 +28,7 @@ This Project using teachable machine - Find Flower Name(Classification)
 1. 이미지 추가(Add image)    
 2. 데이터 정제(Data Cleansing) 
 
-## Html, css, js
+## 2. 웹 프로그래밍 (html, css, js)
 
 이미지 삽입 전    
 
@@ -37,3 +37,7 @@ This Project using teachable machine - Find Flower Name(Classification)
 이미지 삽입 후    
 
 <img src="readme_img/Lagrass.PNG" width="60%" height="60%" />  
+
+## 3. 웹 뷰(webview) 앱  
+
+<img src="readme_img/splash.png" width="60%" height="60%" /> 
