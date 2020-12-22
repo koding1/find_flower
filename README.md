@@ -1,6 +1,6 @@
 # 티쳐블 머신을 이용한 꽃 이름 찾기    
 
-https://keen-morse-563405.netlify.app/
+<!--https://keen-morse-563405.netlify.app/-->
 https://haegu.cf/    
 
 This Project using teachable machine - Find Flower Name(Classification)
