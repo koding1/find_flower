@@ -18,7 +18,7 @@ This Project using teachable machine - Find Flower Name(Classification)
     
 ## 프로젝트 진행 과정
 
-## 1. 꽃 이미지 데이터 크롤링
+## 1. 꽃 이미지 데이터 크롤링 (python)
 
 총 ()개의 꽃을 선정했으며, 각 꽃을 '한글'로 검색하여 상위 50개의 이미지를 크롤링 하였다.   
 클래스 양에 비해, 각 데이터의 양이 매우 적음을 인지하고 있다.    
